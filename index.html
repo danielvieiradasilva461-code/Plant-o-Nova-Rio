@@ -442,54 +442,79 @@
             min-width: 150px;
         }
         /* Estilos para impressão */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .container {
-                box-shadow: none;
-                border-radius: 0;
-            }
-            .btn, .button-group, .notification, .help-badge {
-                display: none;
-            }
-            input, textarea {
-                border: none !important;
-                background: transparent !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-            input:focus, textarea:focus {
-                outline: none;
-                box-shadow: none !important;
-            }
-            .plantonista-value input {
-                font-weight: 600;
-                color: #2c3e50;
-            }
-            .item-content input, .data-item input {
-                font-weight: 600;
-                color: #2c3e50;
-            }
-            .signature-input {
-                border-bottom: 1px solid #ccc !important;
-                padding-bottom: 20px !important;
-            }
-            .header {
-                padding: 10px;
-            }
-            .iluminacao-table {
-                page-break-inside: avoid;
-            }
-            .iluminacao-table input {
-                border: none !important;
-                background: transparent !important;
-            }
-            .calculation-info {
-                display: none;
-            }
-        }
+       /* Estilos para impressão - CORRIGIDOS */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    .btn, .button-group, .notification, .help-badge {
+        display: none !important;
+    }
+    input, textarea {
+        border: 1px solid #ccc !important;
+        background: transparent !important;
+        padding: 4px !important;
+        margin: 2px !important;
+        color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    input:focus, textarea:focus {
+        outline: none;
+        box-shadow: none !important;
+    }
+    .plantonista-value input {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    .item-content input, .data-item input {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    .signature-input {
+        border-bottom: 1px solid #ccc !important;
+        padding-bottom: 20px !important;
+    }
+    .header {
+        padding: 10px;
+        background: #2c3e50 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .header::before {
+        display: none;
+    }
+    .iluminacao-table {
+        page-break-inside: avoid;
+    }
+    .iluminacao-table input {
+        border: 1px solid #ccc !important;
+        background: transparent !important;
+    }
+    .calculation-info {
+        display: none;
+    }
+    /* Garantir que as imagens sejam impressas */
+    img {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    /* Garantir que cores de fundo sejam impressas */
+    .column-title, .section-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
         @media (max-width: 900px) {
             .plantonistas-section, .sections-container {
                 flex-direction: column;
@@ -638,14 +663,14 @@
     <div class="notification" id="saveNotification">Relatório salvo com sucesso!</div>
     <div class="container">
         <div class="header">
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-                <img src="https://novario.com.br/wp-content/uploads/2024/06/novario-logo.png" alt="Logo Nova Rio" style="height: 60px;">
-                <div style="text-align: center;">
-                    <div class="logo">NOVA RIO - COGIC - FIOCRUZ</div>
-                    <div class="report-title">Relatório de Plantão Noturno</div>
-                </div>
-                <img src="https://www.cogic.fiocruz.br/wp-content/uploads/2024/05/logo_site_novo_final.jpg" alt="Logo Fiocruz" style="height: 60px;">
-            </div>
+           <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+    <img src="https://novario.com.br/wp-content/uploads/2024/06/novario-logo.png" alt="Logo Nova Rio" style="height: 60px; display: block;">
+    <div style="text-align: center;">
+        <div class="logo">NOVA RIO - COGIC - FIOCRUZ</div>
+        <div class="report-title">Relatório de Plantão Noturno</div>
+    </div>
+    <img src="https://www.cogic.fiocruz.br/wp-content/uploads/2024/05/logo_site_novo_final.jpg" alt="Logo Fiocruz" style="height: 60px; display: block;">
+</div>
             <div class="plantao-info">
                 <div class="info-group">
                     <div class="info-label">INÍCIO DO PLANTÃO</div>
@@ -1609,3 +1634,4 @@
 </body>
 
 </html>
+
