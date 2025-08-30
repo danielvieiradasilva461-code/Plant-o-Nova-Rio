@@ -118,7 +118,7 @@
         }
         .column {
             flex: 1;
-            padding: 10px;
+            padding: 8px;
             background: #f8fafc;
             min-width: 200px;
         }
@@ -147,7 +147,7 @@
             color: #2c3e50;
             font-size: 0.9rem;
             text-align: left;
-            margin-right: 5px;
+            margin-right: 2px;
         }
         .plantonista-value {
             flex: 1;
@@ -797,27 +797,27 @@
                     <div class="column-title">CAMPUS MANGUINHOS</div>
                     <div class="plantonistas-grid">
                         <div class="plantonista-item">
-                            <div class="plantonista-label">ENC:</div>
+                            <div class="plantonista-label">ENCARREGADO:</div>
                             <div class="plantonista-value">
                                 <input type="text" value="247 - DANIEL VIEIRA" id="encarregado" placeholder="Nome do encarregado">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OF ELET:</div>
+                            <div class="plantonista-label">OFICIAL ELETRICA:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="395 - FELIPE PINTO" id="ofElet1">
+                                <input type="text" value="395 - FELIPE PINTO" id="oficialEletrica1">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OF CIVIL:</div>
+                            <div class="plantonista-label">OFICIAL CIVIL:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="373 - JOSE CARLOS" id="ofCivil1">
+                                <input type="text" value="373 - JOSE CARLOS" id="oficialCivil1">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">AUX ELET:</div>
+                            <div class="plantonista-label">AUXILIAR ELETRICA:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="190 - ANDRÉ WILLIANS" id="auxElet1">
+                                <input type="text" value="190 - ANDRÉ WILLIANS" id="auxiliarEletrica1">
                             </div>
                         </div>
                     </div>
@@ -826,21 +826,21 @@
                     <div class="column-title">CENTRO HOSPITALAR COVID-19</div>
                     <div class="plantonistas-grid">
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OF ELET:</div>
+                            <div class="plantonista-label">:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="076 - CLEBER GONÇALVES" id="ofElet2">
+                                <input type="text" value="076 - CLEBER GONÇALVES" id="ofIialEletrica2">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OF CIVIL:</div>
+                            <div class="plantonista-label">:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="166 - DANIELO BENIDITO" id="ofCivil2">
+                                <input type="text" value="166 - DANIELO BENIDITO" id="oficialCivil2">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">AUX ELET:</div>
+                            <div class="plantonista-label">:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="541 - WILLIAM AZEVEDO" id="auxElet2">
+                                <input type="text" value="541 - WILLIAM AZEVEDO" id="auxiliarEletrica2">
                             </div>
                         </div>
                     </div>
@@ -849,21 +849,21 @@
                     <div class="column-title">INSTITUTO FERNANDES FIGUEIRA (IFF)</div>
                     <div class="plantonistas-grid">
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OF ELET:</div>
+                            <div class="plantonista-label">:</div>
                             <div class="plantonista-value">
-                                <input type="text" placeholder="Nome do oficial elétrico" id="ofElet3">
+                                <input type="text" placeholder="Nome do oficial elétrico" id="oficialEletrica3">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OF CIVIL:</div>
+                            <div class="plantonista-label">:</div>
                             <div class="plantonista-value">
-                                <input type="text" placeholder="Nome do oficial civil" id="ofCivil3">
+                                <input type="text" placeholder="Nome do oficial civil" id="oficialCivil3">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">AUX ELET:</div>
+                            <div class="plantonista-label">:</div>
                             <div class="plantonista-value">
-                                <input type="text" placeholder="Nome do auxiliar elétrico" id="auxElet3">
+                                <input type="text" placeholder="Nome do auxiliar elétrico" id="auxiliarEletrica3">
                             </div>
                         </div>
                     </div>
@@ -1343,7 +1343,7 @@
                                 <div class="data-header">20h</div>
                                 <div class="data-header">06h</div>
                                 <div class="data-header">Consumo (m³)</div>
-                                <div class="data-header">Status</div>
+                                <div class="data-header">RESERV. PRINCIPAL</div>
                                 <div class="data-item"><input type="number" step="0.1" value="60202.3" id="reservatorio20h"></div>
                                 <div class="data-item"><input type="number" step="0.1" value="60208.6" id="reservatorio06h"></div>
                                 <div class="data-item"><input type="text" value="" id="diferencaReservatorio" readonly></div>
@@ -1409,21 +1409,30 @@
                                 <div class="item-title">NÍVEIS DOS RESERVATÓRIOS:</div>
                             </div>
                             <div class="item-content">
-                                <div style="margin-bottom: 10px;">
-                                    <strong>🔹 Mario Olinto - Cisterna:</strong>
-                                    <input type="text" value="100%" id="marioOlintoCisterna" style="width: 80px; margin-left: 10px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 10px; font-weight: 600; color: #3498db; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;">
+                                    <div>RESERVATÓRIO</div>
+                                    <div style="text-align: center;">20h</div>
+                                    <div style="text-align: center;">06h</div>
                                 </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong>🔹 Prédio Principal (Hospital) - Cisterna Principal:</strong>
-                                    <input type="text" value="100%" id="predioPrincipalCisternaPrincipal" style="width: 80px; margin-left: 10px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <div><strong>1. Mario Olinto - Cisterna:</strong></div>
+                                    <div><input type="text" value="100%" id="marioOlintoCisterna20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="marioOlintoCisterna06h" style="width: 100%; text-align: center;"></div>
                                 </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong>🔹 Prédio Principal (Hospital) - Cisterna Secundária:</strong>
-                                    <input type="text" value="100%" id="predioPrincipalCisternaSecundaria" style="width: 80px; margin-left: 10px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <div><strong>2. Prédio Principal (Hospital) - Cisterna Principal:</strong></div>
+                                    <div><input type="text" value="100%" id="predioPrincipalCisternaPrincipal20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="predioPrincipalCisternaPrincipal06h" style="width: 100%; text-align: center;"></div>
                                 </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong>🔹 Prédio da Farmácia - Reservatório Superior:</strong>
-                                    <input type="text" value="100%" id="predioFarmaciaReservatorio" style="width: 80px; margin-left: 10px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <div><strong>3. Prédio Principal (Hospital) - Cisterna Secundária:</strong></div>
+                                    <div><input type="text" value="100%" id="predioPrincipalCisternaSecundaria20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="predioPrincipalCisternaSecundaria06h" style="width: 100%; text-align: center;"></div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                    <div><strong>4. Prédio da Farmácia - Reservatório Superior:</strong></div>
+                                    <div><input type="text" value="100%" id="predioFarmaciaReservatorio20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="predioFarmaciaReservatorio06h" style="width: 100%; text-align: center;"></div>
                                 </div>
                             </div>
                         </div>
@@ -1436,7 +1445,7 @@
                                 <div class="data-header">20h</div>
                                 <div class="data-header">06h</div>
                                 <div class="data-header">Consumo (m³)</div>
-                                <div class="data-header">Status</div>
+                                <div class="data-header">MANÔMETRO</div>
                                 <div class="data-item"><input type="number" step="0.1" placeholder="Leitura 20h" id="hidrometroIff20h"></div>
                                 <div class="data-item"><input type="number" step="0.1" placeholder="Leitura 06h" id="hidrometroIff06h"></div>
                                 <div class="data-item"><input type="text" value="" id="diferencaHidrometroIff" readonly></div>
@@ -1890,6 +1899,7 @@
     </script>
 </body>
 </html>
+
 
 
 
