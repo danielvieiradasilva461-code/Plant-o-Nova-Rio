@@ -498,6 +498,33 @@
             .iluminacao-table {
                 page-break-inside: avoid;
             }
+            /* Correção para manter os plantonistas na mesma linha na impressão */
+            .plantonistas-section {
+                display: flex !important;
+                flex-direction: row !important;
+                page-break-inside: avoid;
+                margin-bottom: 15px;
+            }
+            .column {
+                flex: 1 !important;
+                min-width: 0 !important;
+                padding: 8px !important;
+                background: #f8fafc !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .column-title {
+                background: #3498db !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                font-size: 0.9rem !important;
+                padding: 6px !important;
+            }
+            .plantonista-value input {
+                font-size: 0.8rem !important;
+                min-width: 120px !important;
+            }
             .iluminacao-table input {
                 border: 1px solid #ccc !important;
                 background: transparent !important;
@@ -1645,31 +1672,55 @@
             });
             // Função para salvar dados no Firestore
             function saveDataToFirestore() {
+                console.log('Tentando salvar dados online...');
                 const user = auth.currentUser;
                 if (!user) {
+                    console.log('Usuário não logado');
                     alert('Você precisa estar logado para salvar online.');
                     return;
                 }
+                
+                console.log('Usuário logado:', user.email);
                 const formData = {};
                 const inputs = document.querySelectorAll('input, textarea');
+                
                 inputs.forEach(input => {
-                    formData[input.id] = input.value;
+                    if (input.id) {
+                        formData[input.id] = input.value;
+                    }
                 });
+                
                 // Adicionar data de modificação
                 formData.lastModified = new Date().toISOString();
+                formData.userEmail = user.email;
+                
+                console.log('Dados a serem salvos:', Object.keys(formData).length, 'campos');
+                
+                // Mostrar loading
+                const notification = document.getElementById('saveNotification');
+                notification.style.display = 'block';
+                notification.textContent = 'Salvando relatório online...';
+                notification.className = 'notification';
+                
                 // Salvar no Firestore
                 db.collection('reports').doc(user.uid).set(formData)
                     .then(() => {
-                        const notification = document.getElementById('saveNotification');
+                        console.log('Dados salvos com sucesso no Firestore');
                         notification.style.display = 'block';
                         notification.textContent = 'Relatório salvo online com sucesso!';
+                        notification.className = 'notification';
                         setTimeout(() => {
                             notification.style.display = 'none';
                         }, 3000);
                     })
                     .catch((error) => {
                         console.error('Erro ao salvar no Firestore:', error);
-                        alert('Erro ao salvar online: ' + error.message);
+                        notification.style.display = 'block';
+                        notification.textContent = 'Erro ao salvar online: ' + error.message;
+                        notification.className = 'notification error';
+                        setTimeout(() => {
+                            notification.style.display = 'none';
+                        }, 5000);
                     });
             }
             // Função para carregar dados do Firestore
@@ -1911,6 +1962,7 @@
     </script>
 </body>
 </html>
+
 
 
 
