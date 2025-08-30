@@ -120,6 +120,7 @@
             flex: 1;
             padding: 10px;
             background: #f8fafc;
+            min-width: 200px;
         }
         .column-title {
             background: #3498db;
@@ -132,7 +133,7 @@
         }
         .plantonistas-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 8px;
         }
         .plantonista-item {
@@ -142,9 +143,11 @@
         }
         .plantonista-label {
             font-weight: 600;
-            width: 120px;
+            width: 70px;
             color: #2c3e50;
             font-size: 0.9rem;
+            text-align: left;
+            margin-right: 5px;
         }
         .plantonista-value {
             flex: 1;
@@ -157,7 +160,9 @@
             font-size: 0.9rem;
             font-weight: 600;
             background: #fff;
+            min-width: 180px; /* Garante que o nome apareça completo */
         }
+
         .sections-container {
             display: flex;
             gap: 15px;
@@ -500,23 +505,28 @@
             .calculation-info {
                 display: none;
             }
-            /* Garantir que as imagens sejam impressas */
-            img {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
             /* Garantir que cores de fundo sejam impressas */
             .column-title, .section-header {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
         }
+        @media (max-width: 1200px) {
+            .plantonistas-section {
+                flex-wrap: wrap;
+            }
+            .column {
+                flex: 1 1 45%;
+                min-width: 300px;
+            }
+        }
         @media (max-width: 900px) {
             .plantonistas-section, .sections-container {
                 flex-direction: column;
+            }
+            .column {
+                flex: 1 1 100%;
+                min-width: auto;
             }
             .plantao-info {
                 flex-direction: column;
@@ -714,6 +724,7 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
     </style>
 </head>
 <body>
@@ -745,12 +756,10 @@
             </div>
         </div>
     </div>
-
     <div class="user-status" id="userStatus" style="display: none;">
         <span id="userEmail"></span>
         <button class="logout-btn" id="logoutBtn">Sair</button>
     </div>
-
     <div class="notification" id="saveNotification">Relatório salvo com sucesso!</div>
     <div class="container">
         <div class="header">
@@ -782,32 +791,33 @@
             </div>
         </div>
         <div class="main-content">
+
             <div class="plantonistas-section">
                 <div class="column">
                     <div class="column-title">CAMPUS MANGUINHOS</div>
                     <div class="plantonistas-grid">
                         <div class="plantonista-item">
-                            <div class="plantonista-label">ENCARREGADO:</div>
+                            <div class="plantonista-label">ENC.:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="247 - DANIEL VIEIRA" id="encarregado1">
+                                <input type="text" value="247 - DANIEL VIEIRA" id="encarregado" placeholder="Nome do encarregado">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OFICIAL ELET.:</div>
+                            <div class="plantonista-label">OF ELET:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="395 - FELIPE PINTO" id="oficialElet1">
+                                <input type="text" value="395 - FELIPE PINTO" id="ofElet1">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OFICIAL CIVIL:</div>
+                            <div class="plantonista-label">OF CIVIL:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="373 - JOSE CARLOS" id="oficialCivil1">
+                                <input type="text" value="373 - JOSE CARLOS" id="ofCivil1">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">AUXILIAR ELET:</div>
+                            <div class="plantonista-label">AUX ELET:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="190 - ANDRÉ WILLIANS" id="auxiliarElet1">
+                                <input type="text" value="190 - ANDRÉ WILLIANS" id="auxElet1">
                             </div>
                         </div>
                     </div>
@@ -816,27 +826,44 @@
                     <div class="column-title">CENTRO HOSPITALAR COVID-19</div>
                     <div class="plantonistas-grid">
                         <div class="plantonista-item">
-                            <div class="plantonista-label">ENCARREGADO:</div>
+                            <div class="plantonista-label">OF ELET:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="247 - DANIEL VIEIRA" id="encarregado2">
+                                <input type="text" value="076 - CLEBER GONÇALVES" id="ofElet2">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OFICIAL ELET.:</div>
+                            <div class="plantonista-label">OF CIVIL:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="076 - CLEBER GONÇALVES" id="oficialElet2">
+                                <input type="text" value="166 - DANIELO BENIDITO" id="ofCivil2">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">OFICIAL CIVIL:</div>
+                            <div class="plantonista-label">AUX ELET:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="166 - DANIELO BENIDITO" id="oficialCivil2">
+                                <input type="text" value="541 - WILLIAM AZEVEDO" id="auxElet2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-title">INSTITUTO FERNANDES FIGUEIRA (IFF)</div>
+                    <div class="plantonistas-grid">
+                        <div class="plantonista-item">
+                            <div class="plantonista-label">OF ELET:</div>
+                            <div class="plantonista-value">
+                                <input type="text" placeholder="Nome do oficial elétrico" id="ofElet3">
                             </div>
                         </div>
                         <div class="plantonista-item">
-                            <div class="plantonista-label">AUXILIAR ELET:</div>
+                            <div class="plantonista-label">OF CIVIL:</div>
                             <div class="plantonista-value">
-                                <input type="text" value="541 - WILLIAM AZEVEDO" id="auxiliarElet2">
+                                <input type="text" placeholder="Nome do oficial civil" id="ofCivil3">
+                            </div>
+                        </div>
+                        <div class="plantonista-item">
+                            <div class="plantonista-label">AUX ELET:</div>
+                            <div class="plantonista-value">
+                                <input type="text" placeholder="Nome do auxiliar elétrico" id="auxElet3">
                             </div>
                         </div>
                     </div>
@@ -995,7 +1022,7 @@
                                             <td><input type="text" id="lum-obs-15" placeholder="Observações"></td>
                                         </tr>
                                         <tr>
-                                            <td>1.16 Trecho 16 - Rua principal entre o Pombal até a Banca de jornal ( Rua Emanoel Dias)</td>
+                                            <td>1.16 Trecho 16 - Rua principal entre o Pombal até la Banca de jornal ( Rua Emanoel Dias)</td>
                                             <td><input type="number" min="0" id="lum-total-16" value="0" class="iluminacao-input"></td>
                                             <td><input type="number" min="0" id="lum-apagadas-16" value="0" class="iluminacao-input"></td>
                                             <td><input type="text" id="lum-obs-16" placeholder="Observações"></td>
@@ -1283,9 +1310,19 @@
                                 <input type="text" value="SEM ANORMALIDADES" id="inspecaoHospital">
                             </div>
                         </div>
+                        <!-- NOVO ITEM ADICIONADO -->
                         <div class="section-item">
                             <div class="item-header">
                                 <div class="item-number">2.</div>
+                                <div class="item-title">INSPEÇÃO DE ILUMINAÇÃO EXTERNA (ILP):</div>
+                            </div>
+                            <div class="item-content">
+                                <input type="text" placeholder="Detalhes da inspeção de iluminação externa" id="iluminacaoExternaHospital">
+                            </div>
+                        </div>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">3.</div>
                                 <div class="item-title">DEMAIS OCORRÊNCIAS:</div>
                             </div>
                             <div class="item-content">
@@ -1329,8 +1366,101 @@
                     </div>
                 </div>
             </div>
+            <div class="sections-container">
+                <div class="section">
+                    <div class="section-header">5. ELÉTRICA IFF (INSTITUTO FERNANDES FIGUEIRA)</div>
+                    <div class="section-content">
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">1.</div>
+                                <div class="item-title">INSPEÇÕES DE ROTINA:</div>
+                            </div>
+                            <div class="item-content">
+                                <input type="text" value="SEM ANORMALIDADES" id="inspecaoIff">
+                            </div>
+                        </div>
+                        <!-- NOVO ITEM ADICIONADO -->
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">2.</div>
+                                <div class="item-title">INSPEÇÃO DE ILUMINAÇÃO EXTERNA (ILP):</div>
+                            </div>
+                            <div class="item-content">
+                                <input type="text" placeholder="Detalhes da inspeção de iluminação externa" id="iluminacaoExternaIff">
+                            </div>
+                        </div>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">3.</div>
+                                <div class="item-title">DEMAIS OCORRÊNCIAS:</div>
+                            </div>
+                            <div class="item-content">
+                                <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasIff">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="section-header">6. CIVIL/HIDRÁULICA IFF (INSTITUTO FERNANDES FIGUEIRA)</div>
+                    <div class="section-content">
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">1.</div>
+                                <div class="item-title">NÍVEIS DOS RESERVATÓRIOS:</div>
+                            </div>
+                            <div class="item-content">
+                                <div style="margin-bottom: 10px;">
+                                    <strong>🔹 Mario Olinto - Cisterna:</strong>
+                                    <input type="text" value="100%" id="marioOlintoCisterna" style="width: 80px; margin-left: 10px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <strong>🔹 Prédio Principal (Hospital) - Cisterna Principal:</strong>
+                                    <input type="text" value="100%" id="predioPrincipalCisternaPrincipal" style="width: 80px; margin-left: 10px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <strong>🔹 Prédio Principal (Hospital) - Cisterna Secundária:</strong>
+                                    <input type="text" value="100%" id="predioPrincipalCisternaSecundaria" style="width: 80px; margin-left: 10px;">
+                                </div>
+                                <div style="margin-bottom: 10px;">
+                                    <strong>🔹 Prédio da Farmácia - Reservatório Superior:</strong>
+                                    <input type="text" value="100%" id="predioFarmaciaReservatorio" style="width: 80px; margin-left: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">2.</div>
+                                <div class="item-title">HIDRÔMETRO PRINCIPAL:</div>
+                            </div>
+                            <div class="data-grid">
+                                <div class="data-header">20h</div>
+                                <div class="data-header">06h</div>
+                                <div class="data-header">Consumo (m³)</div>
+                                <div class="data-header">Status</div>
+                                <div class="data-item"><input type="number" step="0.1" placeholder="Leitura 20h" id="hidrometroIff20h"></div>
+                                <div class="data-item"><input type="number" step="0.1" placeholder="Leitura 06h" id="hidrometroIff06h"></div>
+                                <div class="data-item"><input type="text" value="" id="diferencaHidrometroIff" readonly></div>
+                                <div class="data-item"><input type="text" value="OK" id="statusHidrometroIff"></div>
+                            </div>
+                            <div class="calculation-info">
+                                <strong>Cálculo automático:</strong> Consumo = Leitura 06h - Leitura 20h
+                                <button class="calc-btn" onclick="calcularDiferencaHidrometroIff()">Calcular Agora</button>
+                            </div>
+                        </div>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">3.</div>
+                                <div class="item-title">OCORRÊNCIAS:</div>
+                            </div>
+                            <div class="item-content">
+                                <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasIffCivil">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="observations-section">
-                <div class="observations-title">5. OBSERVAÇÕES / ANOTAÇÕES</div>
+                <div class="observations-title">7. OBSERVAÇÕES / ANOTAÇÕES</div>
                 <div class="observation-item">
                     <div class="observation-content">
                         <textarea id="observacao1">OM 94081 _ TRECHO 03</textarea>
@@ -1363,14 +1493,12 @@
             <div id="currentDateTime" style="margin-top: 5px; font-weight: 600;"></div>
         </div>
     </div>
-
     <!-- Firebase App (o core do Firebase) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <!-- Firebase Authentication -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <!-- Firebase Firestore -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
     <script>
         // Configuração do Firebase
         const firebaseConfig = {
@@ -1382,15 +1510,12 @@
             appId: "1:601694657081:web:612ad49424714b707a8be8",
             measurementId: "G-D02K9PJSNN"
         };
-
         // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
-
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM completamente carregado e analisado');
-            
             // Elementos de autenticação
             const authContainer = document.getElementById('authContainer');
             const userStatus = document.getElementById('userStatus');
@@ -1406,33 +1531,27 @@
             const registerError = document.getElementById('registerError');
             const loginLoading = document.getElementById('loginLoading');
             const registerLoading = document.getElementById('registerLoading');
-            
             // Alternar entre login e registro
             showRegister.addEventListener('click', () => {
                 loginView.style.display = 'none';
                 registerView.style.display = 'block';
                 loginError.textContent = '';
             });
-            
             showLogin.addEventListener('click', () => {
                 registerView.style.display = 'none';
                 loginView.style.display = 'block';
                 registerError.textContent = '';
             });
-            
             // Login
             loginBtn.addEventListener('click', () => {
                 const email = document.getElementById('loginEmail').value;
                 const password = document.getElementById('loginPassword').value;
-                
                 if (!email || !password) {
                     loginError.textContent = 'Por favor, preencha todos os campos.';
                     return;
                 }
-                
                 loginError.textContent = '';
                 loginLoading.style.display = 'block';
-                
                 auth.signInWithEmailAndPassword(email, password)
                     .then((userCredential) => {
                         // Login bem-sucedido
@@ -1440,7 +1559,6 @@
                         authContainer.style.display = 'none';
                         userStatus.style.display = 'flex';
                         userEmail.textContent = userCredential.user.email;
-                        
                         // Carregar dados do usuário
                         loadUserDataFromFirestore(userCredential.user.uid);
                     })
@@ -1449,31 +1567,25 @@
                         loginError.textContent = error.message;
                     });
             });
-            
             // Registro
             registerBtn.addEventListener('click', () => {
                 const name = document.getElementById('registerName').value;
                 const email = document.getElementById('registerEmail').value;
                 const password = document.getElementById('registerPassword').value;
-                
                 if (!name || !email || !password) {
                     registerError.textContent = 'Por favor, preencha todos os campos.';
                     return;
                 }
-                
                 if (password.length < 6) {
                     registerError.textContent = 'A senha deve ter pelo menos 6 caracteres.';
                     return;
                 }
-                
                 registerError.textContent = '';
                 registerLoading.style.display = 'block';
-                
                 auth.createUserWithEmailAndPassword(email, password)
                     .then((userCredential) => {
                         // Registro bem-sucedido
                         registerLoading.style.display = 'none';
-                        
                         // Salvar nome do usuário no Firestore
                         return db.collection('users').doc(userCredential.user.uid).set({
                             name: name,
@@ -1491,12 +1603,10 @@
                         registerError.textContent = error.message;
                     });
             });
-            
             // Logout
             logoutBtn.addEventListener('click', () => {
                 auth.signOut();
             });
-            
             // Monitorar estado de autenticação
             auth.onAuthStateChanged((user) => {
                 if (user) {
@@ -1504,7 +1614,6 @@
                     authContainer.style.display = 'none';
                     userStatus.style.display = 'flex';
                     userEmail.textContent = user.email;
-                    
                     // Carregar dados do usuário
                     loadUserDataFromFirestore(user.uid);
                 } else {
@@ -1513,7 +1622,6 @@
                     userStatus.style.display = 'none';
                 }
             });
-            
             // Função para salvar dados no Firestore
             function saveDataToFirestore() {
                 const user = auth.currentUser;
@@ -1521,23 +1629,19 @@
                     alert('Você precisa estar logado para salvar online.');
                     return;
                 }
-                
                 const formData = {};
                 const inputs = document.querySelectorAll('input, textarea');
                 inputs.forEach(input => {
                     formData[input.id] = input.value;
                 });
-                
                 // Adicionar data de modificação
                 formData.lastModified = new Date().toISOString();
-                
                 // Salvar no Firestore
                 db.collection('reports').doc(user.uid).set(formData)
                     .then(() => {
                         const notification = document.getElementById('saveNotification');
                         notification.style.display = 'block';
                         notification.textContent = 'Relatório salvo online com sucesso!';
-                        
                         setTimeout(() => {
                             notification.style.display = 'none';
                         }, 3000);
@@ -1547,14 +1651,12 @@
                         alert('Erro ao salvar online: ' + error.message);
                     });
             }
-            
             // Função para carregar dados do Firestore
             function loadUserDataFromFirestore(userId) {
                 db.collection('reports').doc(userId).get()
                     .then((doc) => {
                         if (doc.exists) {
                             const formData = doc.data();
-                            
                             // Preencher todos os campos
                             for (const id in formData) {
                                 const element = document.getElementById(id);
@@ -1562,16 +1664,14 @@
                                     element.value = formData[id];
                                 }
                             }
-                            
                             // Atualizar os cálculos
                             calculateIluminacaoSummary();
                             calcularConsumoAgua();
                             calcularDiferencaReservatorio();
-                            
+                            calcularDiferencaHidrometroIff();
                             const notification = document.getElementById('saveNotification');
                             notification.style.display = 'block';
                             notification.textContent = 'Dados carregados do servidor!';
-                            
                             setTimeout(() => {
                                 notification.style.display = 'none';
                             }, 3000);
@@ -1583,24 +1683,19 @@
                         console.error('Erro ao carregar do Firestore:', error);
                     });
             }
-            
             // Função para calcular o resumo da iluminação
             function calculateIluminacaoSummary() {
                 console.log('Calculando resumo de iluminação...');
                 let totalLuminarias = 0;
                 let totalApagadas = 0;
-                
                 for (let i = 1; i <= 33; i++) {
                     const totalInput = document.getElementById(`lum-total-${i}`);
                     const apagadasInput = document.getElementById(`lum-apagadas-${i}`);
-                    
                     if (totalInput && apagadasInput) {
                         const total = parseInt(totalInput.value) || 0;
                         const apagadas = parseInt(apagadasInput.value) || 0;
-                        
                         totalLuminarias += total;
                         totalApagadas += apagadas;
-                        
                         // Garante que apagadas não seja maior que total
                         if (apagadas > total) {
                             apagadasInput.value = total;
@@ -1608,17 +1703,13 @@
                         }
                     }
                 }
-                
                 const percentualFuncionando = totalLuminarias > 0 ? 
                     Math.round(((totalLuminarias - totalApagadas) / totalLuminarias) * 100) : 100;
-                
                 document.getElementById('total-luminarias').textContent = totalLuminarias;
                 document.getElementById('total-apagadas').textContent = totalApagadas;
                 document.getElementById('percentual-funcionando').textContent = `${percentualFuncionando}%`;
-                
                 console.log('Resumo calculado:', {totalLuminarias, totalApagadas, percentualFuncionando});
             }
-
             // Função para calcular o consumo de água (Manguinhos)
             function calcularConsumoAgua() {
                 console.log('Calculando consumo de água...');
@@ -1626,10 +1717,8 @@
                     const leitura20h = parseFloat(document.getElementById('hidrometro20h').value) || 0;
                     const leitura06h = parseFloat(document.getElementById('hidrometro06h').value) || 0;
                     const consumo = leitura06h - leitura20h;
-                    
-                    // Formatar o consumo com uma casa decimal e unidade m³
+                    // Formatar o consumo com uma casa decimal и unidade m³
                     document.getElementById('consumoAgua').value = consumo.toFixed(1).replace('.', ',') + ' m³';
-                    
                     console.log('Consumo calculado:', consumo);
                     return consumo;
                 } catch (e) {
@@ -1637,7 +1726,6 @@
                     return 0;
                 }
             }
-
             // Função para calcular diferença no reservatório (Hospital)
             function calcularDiferencaReservatorio() {
                 console.log('Calculando diferença no reservatório...');
@@ -1645,10 +1733,8 @@
                     const leitura20h = parseFloat(document.getElementById('reservatorio20h').value) || 0;
                     const leitura06h = parseFloat(document.getElementById('reservatorio06h').value) || 0;
                     const diferenca = leitura06h - leitura20h;
-                    
-                    // Formatar a diferença (agora chamada de consumo) com uma casa decimal e unidade m³
+                    // Formatar a diferença (agora chamada de consumo) com uma casa decimal и unidade m³
                     document.getElementById('diferencaReservatorio').value = diferenca.toFixed(1).replace('.', ',') + ' m³';
-                    
                     console.log('Diferença calculada:', diferenca);
                     return diferenca;
                 } catch (e) {
@@ -1656,25 +1742,37 @@
                     return 0;
                 }
             }
-
+            // Função para calcular diferença no hidrômetro IFF
+            function calcularDiferencaHidrometroIff() {
+                console.log('Calculando diferença no hidrômetro IFF...');
+                try {
+                    const leitura20h = parseFloat(document.getElementById('hidrometroIff20h').value) || 0;
+                    const leitura06h = parseFloat(document.getElementById('hidrometroIff06h').value) || 0;
+                    const diferenca = leitura06h - leitura20h;
+                    // Formatar a diferença com uma casa decimal и unidade m³
+                    document.getElementById('diferencaHidrometroIff').value = diferenca.toFixed(1).replace('.', ',') + ' m³';
+                    console.log('Diferença IFF calculada:', diferenca);
+                    return diferenca;
+                } catch (e) {
+                    console.error("Erro ao calcular diferença no hidrômetro IFF", e);
+                    return 0;
+                }
+            }
             // Função para calcular todos os valores
             function calcularTodos() {
                 console.log('Calculando todos os valores...');
                 calculateIluminacaoSummary();
                 const consumo = calcularConsumoAgua();
                 const diferenca = calcularDiferencaReservatorio();
-                
+                const diferencaIff = calcularDiferencaHidrometroIff();
                 const notification = document.getElementById('saveNotification');
                 notification.style.display = 'block';
-                notification.textContent = `Cálculos realizados: Consumo ${consumo.toFixed(1)} m³, Diferença ${diferenca.toFixed(1)} m³`;
-                
+                notification.textContent = `Cálculos realizados: Consumo ${consumo.toFixed(1)} m³, Diferença ${diferenca.toFixed(1)} m³, IFF ${diferencaIff.toFixed(1)} m³`;
                 setTimeout(() => {
                     notification.style.display = 'none';
                 }, 3000);
-                
                 console.log('Todos os cálculos foram realizados');
             }
-
             // Função para atualizar data e hora automaticamente
             function updateDateTime() {
                 const now = new Date();
@@ -1691,16 +1789,13 @@
                 });
                 document.getElementById('currentDateTime').textContent = `${dateStr} - ${timeStr}`;
             }
-
             // Inicialização
             function init() {
                 console.log('Inicializando aplicação...');
-                
                 // Carregar dados ao abrir a página
                 calculateIluminacaoSummary();
                 calcularConsumoAgua();
                 calcularDiferencaReservatorio();
-                
                 // Adicionar listeners para eventos de input
                 const inputs = document.querySelectorAll('input, textarea');
                 inputs.forEach(input => {
@@ -1708,26 +1803,21 @@
                         input.addEventListener('input', calculateIluminacaoSummary);
                     }
                 });
-                
                 // Event listeners para cálculos de água
                 document.getElementById('hidrometro20h').addEventListener('input', calcularConsumoAgua);
                 document.getElementById('hidrometro06h').addEventListener('input', calcularConsumoAgua);
                 document.getElementById('reservatorio20h').addEventListener('input', calcularDiferencaReservatorio);
                 document.getElementById('reservatorio06h').addEventListener('input', calcularDiferencaReservatorio);
-                
                 // Atualizar data e hora
                 updateDateTime();
                 setInterval(updateDateTime, 1000);
-                
                 // Botão Imprimir
                 document.querySelector('.btn-print').addEventListener('click', function() {
                     console.log('Imprimindo relatório...');
                     window.print();
                 });
-                
                 // Botão Salvar Online
                 document.querySelector('.btn-save').addEventListener('click', saveDataToFirestore);
-                
                 // Botão Limpar
                 document.querySelector('.btn-clear').addEventListener('click', function() {
                     if(confirm('Tem certeza que deseja limpar todo o formulário?')) {
@@ -1735,25 +1825,22 @@
                         document.querySelectorAll('input, textarea').forEach(function(element) {
                             element.value = ''; // Limpa todos os campos
                         });
-                        
                         // Restaurar valores padrão para iluminação
                         document.querySelectorAll('.iluminacao-input[type="number"]').forEach(input => {
                             input.value = '0';
                         });
-                        
                         // Restaurar valores padrão para cálculos
                         document.getElementById('hidrometro20h').value = '2854791.9';
                         document.getElementById('hidrometro00h').value = '2854951.5';
                         document.getElementById('hidrometro06h').value = '2855413.5';
                         document.getElementById('reservatorio20h').value = '60202.3';
                         document.getElementById('reservatorio06h').value = '60208.6';
-                        
                         // Restaurar campo OM
                         document.getElementById('omIluminacao').value = 'OM 94081';
-                        
+                        // Restaurar encarregado geral
+                        document.getElementById('encarregado').value = '247 - DANIEL VIEIRA';
                         // Recalcular valores
                         calcularTodos();
-                        
                         // Mostrar notificação de limpeza
                         const notification = document.getElementById('saveNotification');
                         notification.style.display = 'block';
@@ -1763,10 +1850,8 @@
                         }, 3000);
                     }
                 });
-                
                 // Botão Calcular Tudo
                 document.querySelector('.btn-help').addEventListener('click', calcularTodos);
-                
                 // Ajuste de altura para textareas
                 const textareas = document.querySelectorAll('textarea');
                 textareas.forEach(textarea => {
@@ -1778,20 +1863,34 @@
                     textarea.style.height = 'auto';
                     textarea.style.height = (textarea.scrollHeight) + 'px';
                 });
-                
                 console.log('Aplicação inicializada com sucesso');
             }
-
             // Iniciar a aplicação
             init();
-            
             // Funções globais para acesso pelos botões de cálculo
             window.calcularConsumoAgua = calcularConsumoAgua;
             window.calcularDiferencaReservatorio = calcularDiferencaReservatorio;
+            // Atualizar matrículas automaticamente (opcional)
+            window.updateMatriculas = function() {
+                ['encarregado', 'ofElet1', 'ofCivil1', 'auxElet1', 'ofElet2', 'ofCivil2', 'auxElet2', 'ofElet3', 'ofCivil3', 'auxElet3'].forEach(id => {
+                    const input = document.getElementById(id);
+                    const spanId = id === 'encarregado' ? 'matriculaEncarregado' : 'matricula' + id.charAt(0).toUpperCase() + id.slice(1);
+                    const span = document.getElementById(spanId);
+                    if (input && span) {
+                        const match = input.value.trim().match(/^(\d{3,4})/);
+                        span.textContent = match ? match[1] : '';
+                    }
+                });
+            };
+            // Chamar ao carregar
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(updateMatriculas, 500);
+            });
         });
     </script>
 </body>
 </html>
+
 
 
 
