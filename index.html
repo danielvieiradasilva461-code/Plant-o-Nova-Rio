@@ -1186,10 +1186,10 @@
                         <div class="section-item">
                             <div class="item-header">
                                 <div class="item-number">4.</div>
-                                <div class="item-title">DEMAIS OCORRÊNCIAS:</div>
+                                <div class="item-title">OBSERVAÇÕES / ANOTAÇÕES:</div>
                             </div>
                             <div class="item-content">
-                                <input type="text" placeholder="Detalhes" id="ocorrenciasElet">
+                                <textarea style="width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 0.9rem; min-height: 60px; resize: vertical; background: #fff;" id="observacoesEletricaManguinhos" placeholder="Digite suas observações aqui..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -1326,11 +1326,20 @@
                         </div>
                         <div class="section-item">
                             <div class="item-header">
-                                <div class="item-number">10.</div>
+                                <div class="item-number">3.</div>
                                 <div class="item-title">OCORRÊNCIAS:</div>
                             </div>
                             <div class="item-content">
                                 <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasCivil">
+                            </div>
+                        </div>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">4.</div>
+                                <div class="item-title">OBSERVAÇÕES / ANOTAÇÕES:</div>
+                            </div>
+                            <div class="item-content">
+                                <textarea style="width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 0.9rem; min-height: 60px; resize: vertical; background: #fff;" id="observacoesCivilManguinhos" placeholder="Digite suas observações aqui..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -1362,10 +1371,10 @@
                         <div class="section-item">
                             <div class="item-header">
                                 <div class="item-number">3.</div>
-                                <div class="item-title">DEMAIS OCORRÊNCIAS:</div>
+                                <div class="item-title">OBSERVAÇÕES / ANOTAÇÕES:</div>
                             </div>
                             <div class="item-content">
-                                <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasHospital">
+                                <textarea style="width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 0.9rem; min-height: 60px; resize: vertical; background: #fff;" id="observacoesEletricaHospital" placeholder="Digite suas observações aqui..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -1402,6 +1411,15 @@
                                 <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasHospitalCivil">
                             </div>
                         </div>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">3.</div>
+                                <div class="item-title">OBSERVAÇÕES / ANOTAÇÕES:</div>
+                            </div>
+                            <div class="item-content">
+                                <textarea style="width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 0.9rem; min-height: 60px; resize: vertical; background: #fff;" id="observacoesCivilHospital" placeholder="Digite suas observações aqui..."></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1431,10 +1449,10 @@
                         <div class="section-item">
                             <div class="item-header">
                                 <div class="item-number">3.</div>
-                                <div class="item-title">DEMAIS OCORRÊNCIAS:</div>
+                                <div class="item-title">OBSERVAÇÕES / ANOTAÇÕES:</div>
                             </div>
                             <div class="item-content">
-                                <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasIff">
+                                <textarea style="width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 0.9rem; min-height: 60px; resize: vertical; background: #fff;" id="observacoesEletricaIff" placeholder="Digite suas observações aqui..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -1448,29 +1466,34 @@
                                 <div class="item-title">NÍVEIS DOS RESERVATÓRIOS:</div>
                             </div>
                             <div class="item-content">
-                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 10px; font-weight: 600; color: #3498db; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 10px; font-weight: 600; color: #3498db; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px;">
                                     <div>RESERVATÓRIO</div>
                                     <div style="text-align: center;">20h</div>
+                                    <div style="text-align: center;">00h</div>
                                     <div style="text-align: center;">06h</div>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
                                     <div>1. Mario Olinto - Cisterna:</div>
                                     <div><input type="text" value="100%" id="marioOlintoCisterna20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="marioOlintoCisterna00h" style="width: 100%; text-align: center;"></div>
                                     <div><input type="text" value="100%" id="marioOlintoCisterna06h" style="width: 100%; text-align: center;"></div>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
                                     <div>2. Prédio Principal (Hospital) - Cisterna Principal:</div>
                                     <div><input type="text" value="100%" id="predioPrincipalCisternaPrincipal20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="predioPrincipalCisternaPrincipal00h" style="width: 100%; text-align: center;"></div>
                                     <div><input type="text" value="100%" id="predioPrincipalCisternaPrincipal06h" style="width: 100%; text-align: center;"></div>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
                                     <div>3. Prédio Principal (Hospital) - Cisterna Secundária:</div>
                                     <div><input type="text" value="100%" id="predioPrincipalCisternaSecundaria20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="predioPrincipalCisternaSecundaria00h" style="width: 100%; text-align: center;"></div>
                                     <div><input type="text" value="100%" id="predioPrincipalCisternaSecundaria06h" style="width: 100%; text-align: center;"></div>
                                 </div>
-                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
+                                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; align-items: center; margin-bottom: 8px;">
                                     <div>4. Prédio da Farmácia - Reservatório Superior:</div>
                                     <div><input type="text" value="100%" id="predioFarmaciaReservatorio20h" style="width: 100%; text-align: center;"></div>
+                                    <div><input type="text" value="100%" id="predioFarmaciaReservatorio00h" style="width: 100%; text-align: center;"></div>
                                     <div><input type="text" value="100%" id="predioFarmaciaReservatorio06h" style="width: 100%; text-align: center;"></div>
                                 </div>
                             </div>
@@ -1504,14 +1527,15 @@
                                 <input type="text" value="SEM ANORMALIDADES" id="ocorrenciasIffCivil">
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="observations-section">
-                <div class="observations-title">7. OBSERVAÇÕES / ANOTAÇÕES</div>
-                <div class="observation-item">
-                    <div class="observation-content">
-                        <textarea id="observacao1">OM 94081 _ TRECHO 03</textarea>
+                        <div class="section-item">
+                            <div class="item-header">
+                                <div class="item-number">4.</div>
+                                <div class="item-title">OBSERVAÇÕES / ANOTAÇÕES:</div>
+                            </div>
+                            <div class="item-content">
+                                <textarea style="width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 0.9rem; min-height: 60px; resize: vertical; background: #fff;" id="observacoesCivilIff" placeholder="Digite suas observações aqui..."></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1962,6 +1986,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
