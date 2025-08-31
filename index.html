@@ -1920,6 +1920,10 @@
                 document.getElementById('hidrometro06h').addEventListener('input', calcularConsumoAgua);
                 document.getElementById('reservatorio20h').addEventListener('input', calcularDiferencaReservatorio);
                 document.getElementById('reservatorio06h').addEventListener('input', calcularDiferencaReservatorio);
+                
+                // Event listeners para cálculos do hidrômetro IFF
+                document.getElementById('hidrometroIff20h').addEventListener('input', calcularDiferencaHidrometroIff);
+                document.getElementById('hidrometroIff06h').addEventListener('input', calcularDiferencaHidrometroIff);
                 // Atualizar data e hora
                 updateDateTime();
                 setInterval(updateDateTime, 1000);
@@ -1982,6 +1986,8 @@
             // Funções globais para acesso pelos botões de cálculo
             window.calcularConsumoAgua = calcularConsumoAgua;
             window.calcularDiferencaReservatorio = calcularDiferencaReservatorio;
+            window.calcularDiferencaHidrometroIff = calcularDiferencaHidrometroIff;
+            window.calculateIluminacaoSummary = calculateIluminacaoSummary;
             // Atualizar matrículas automaticamente (opcional)
             window.updateMatriculas = function() {
                 ['encarregado', 'ofElet1', 'ofCivil1', 'auxElet1', 'ofElet2', 'ofCivil2', 'auxElet2', 'ofElet3', 'ofCivil3', 'auxElet3'].forEach(id => {
@@ -2000,6 +2006,82 @@
             });
         });
     </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function updateDates() {
+            const today = new Date();
+            const currentHour = today.getHours();
+
+            let startDate = new Date(today);
+            let endDate = new Date(today);
+
+            // Se o horário atual for antes das 7h, o plantão que está terminando começou no dia anterior.
+            // Se o horário atual for depois das 19h, o plantão que está começando é o de hoje.
+            // Caso contrário, estamos no meio do dia, e o plantão a ser preenchido é o que terminou hoje de manhã.
+
+            if (currentHour < 7) {
+                // Estamos no dia seguinte ao início do plantão
+                startDate.setDate(today.getDate() - 1);
+                // A data final é hoje (quando o plantão termina)
+                endDate = new Date(today);
+            } else if (currentHour >= 19) {
+                // Estamos no dia do início do plantão
+                startDate = new Date(today);
+                // A data final é amanhã (quando o plantão termina)
+                endDate.setDate(today.getDate() + 1);
+            } else {
+                // Entre 7h e 19h - plantão que terminou hoje de manhã
+                // Início foi ontem, fim foi hoje
+                startDate.setDate(today.getDate() - 1);
+                endDate = new Date(today);
+            }
+
+            const dayNames = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
+
+            const formatDay = (date) => dayNames[date.getDay()];
+            const formatDate = (date) => {
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = String(date.getFullYear()).slice(-2);
+                return `${day}/${month}/${year}`;
+            };
+
+            document.getElementById('startDate').value = formatDate(startDate);
+            document.getElementById('startDay').value = formatDay(startDate);
+            document.getElementById('endDate').value = formatDate(endDate);
+            document.getElementById('endDay').value = formatDay(endDate);
+        }
+
+        updateDates();
+    });
+</script>
 </body>
 </html>
 
