@@ -802,17 +802,17 @@
                 <div class="info-group">
                     <div class="info-label">INÍCIO DO PLANTÃO</div>
                     <div class="info-value">
-                        <input type="text" placeholder="Data" value="28/06/25" id="startDate">
-                        <input type="text" placeholder="Dia" value="SAB" id="startDay">
-                        <input type="text" placeholder="Horário" value="19:00 h" id="startTime">
+                        <input type="text" placeholder="Data" value="28/06/25" id="startDate" readonly>
+                        <input type="text" placeholder="Dia" value="SAB" id="startDay" readonly>
+                        <input type="text" placeholder="Horário" value="19:00 h" id="startTime" readonly>
                     </div>
                 </div>
                 <div class="info-group">
                     <div class="info-label">FINAL DO PLANTÃO</div>
                     <div class="info-value">
-                        <input type="text" placeholder="Data" value="29/06/25" id="endDate">
-                        <input type="text" placeholder="Dia" value="DOM" id="endDay">
-                        <input type="text" placeholder="Horário" value="07:00 h" id="endTime">
+                        <input type="text" placeholder="Data" value="29/06/25" id="endDate" readonly>
+                        <input type="text" placeholder="Dia" value="DOM" id="endDay" readonly>
+                        <input type="text" placeholder="Horário" value="07:00 h" id="endTime" readonly>
                     </div>
                 </div>
             </div>
@@ -1604,6 +1604,54 @@
         const db = firebase.firestore();
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM completamente carregado e analisado');
+            
+            // Função para atualizar as datas do plantão automaticamente
+            function updatePlantaoDates() {
+                const now = new Date();
+                let startDate, endDate;
+                
+                if (now.getHours() >= 19) {
+                    // Após 19h: plantão atual (inicia hoje às 19h, termina amanhã às 7h)
+                    startDate = new Date(now);
+                    endDate = new Date(now);
+                    endDate.setDate(endDate.getDate() + 1);
+                } else {
+                    // Antes das 19h: plantão anterior (iniciou ontem às 19h, terminou hoje às 7h)
+                    startDate = new Date(now);
+                    startDate.setDate(startDate.getDate() - 1);
+                    endDate = new Date(now);
+                }
+                
+                const dayNames = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
+                
+                const formatDate = (date) => {
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const year = String(date.getFullYear()).slice(-2);
+                    return `${day}/${month}/${year}`;
+                };
+                
+                const formatDay = (date) => dayNames[date.getDay()];
+                
+                // Atualizar os campos
+                document.getElementById('startDate').value = formatDate(startDate);
+                document.getElementById('startDay').value = formatDay(startDate);
+                document.getElementById('endDate').value = formatDate(endDate);
+                document.getElementById('endDay').value = formatDay(endDate);
+                
+                console.log('Datas do plantão atualizadas:', {
+                    inicio: `${formatDate(startDate)} ${formatDay(startDate)}`,
+                    fim: `${formatDate(endDate)} ${formatDay(endDate)}`,
+                    horarioAtual: `${now.getHours()}:${now.getMinutes()}`
+                });
+            }
+            
+            // Executar a atualização imediatamente
+            updatePlantaoDates();
+            
+            // Executar a atualização a cada minuto
+            setInterval(updatePlantaoDates, 60000);
+            
             // Elementos de autenticação
             const authContainer = document.getElementById('authContainer');
             const userStatus = document.getElementById('userStatus');
@@ -1725,7 +1773,7 @@
                 const inputs = document.querySelectorAll('input, textarea');
                 
                 inputs.forEach(input => {
-                    if (input.id) {
+                    if (input.id && !input.hasAttribute('readonly')) {
                         formData[input.id] = input.value;
                     }
                 });
@@ -1769,10 +1817,10 @@
                     .then((doc) => {
                         if (doc.exists) {
                             const formData = doc.data();
-                            // Preencher todos os campos
+                            // Preencher todos os campos (exceto readonly)
                             for (const id in formData) {
                                 const element = document.getElementById(id);
-                                if (element && id !== 'lastModified') {
+                                if (element && id !== 'lastModified' && !element.hasAttribute('readonly')) {
                                     element.value = formData[id];
                                 }
                             }
@@ -2084,6 +2132,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
