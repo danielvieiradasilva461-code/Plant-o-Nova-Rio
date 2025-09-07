@@ -1170,7 +1170,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="iluminacao-summary">
+                                <div style="margin-top: 10px; display: flex; gap: 15px; flex-wrap: wrap; font-weight: 600; font-size: 0.9rem;">
+                                    <span>Total de Luminárias: 790</span>
+                                    <span>Luminárias Apagadas: 129</span>
+                                    <span>Percentual Funcionando: 84%</span>
+                                </div>
+                                <div class="iluminacao-summary" style="display: none;">
                                     <div class="summary-item">
                                         Total de Luminárias: <span class="summary-value" id="total-luminarias">0</span>
                                     </div>
@@ -1263,65 +1268,45 @@
                         <div class="section-item">
                             <div class="item-header">
                                 <div class="item-number">6.</div>
-                                <div class="item-title">CISTERNA 1 MILHÃO</div>
+                                <div class="item-title">RESERVATÓRIO</div>
                             </div>
-                            <div class="data-grid">
-                                <div class="data-header">20h</div>
-                                <div class="data-header">00h</div>
-                                <div class="data-header">06h</div>
-                                <div class="data-header"></div>
-                                <div class="data-item"><input type="text" value="100%" id="cisterna1_20h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="cisterna1_00h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="cisterna1_06h"></div>
-                                <div class="data-item"></div>
-                            </div>
-                        </div>
-                        <div class="section-item">
-                            <div class="item-header">
-                                <div class="item-number">7.</div>
-                                <div class="item-title">CISTERNA 900 kL</div>
-                            </div>
-                            <div class="data-grid">
-                                <div class="data-header">20h</div>
-                                <div class="data-header">00h</div>
-                                <div class="data-header">06h</div>
-                                <div class="data-header"></div>
-                                <div class="data-item"><input type="text" value="100%" id="cisterna2_20h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="cisterna2_00h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="cisterna2_06h"></div>
-                                <div class="data-item"></div>
-                            </div>
-                        </div>
-                        <div class="section-item">
-                            <div class="item-header">
-                                <div class="item-number">8.</div>
-                                <div class="item-title">PAVILHAO 34 MARIA DEANNE</div>
-                            </div>
-                            <div class="data-grid">
-                                <div class="data-header">20h</div>
-                                <div class="data-header">00h</div>
-                                <div class="data-header">06h</div>
-                                <div class="data-header"></div>
-                                <div class="data-item"><input type="text" value="100%" id="pavilhao34_20h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="pavilhao34_00h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="pavilhao34_06h"></div>
-                                <div class="data-item"></div>
-                            </div>
-                        </div>
-                        <div class="section-item">
-                            <div class="item-header">
-                                <div class="item-number">9.</div>
-                                <div class="item-title">PAVILHAO 26 LEONIDAS DEANNE</div>
-                            </div>
-                            <div class="data-grid">
-                                <div class="data-header">20h</div>
-                                <div class="data-header">00h</div>
-                                <div class="data-header">06h</div>
-                                <div class="data-header"></div>
-                                <div class="data-item"><input type="text" value="100%" id="pavilhao26_20h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="pavilhao26_00h"></div>
-                                <div class="data-item"><input type="text" value="100%" id="pavilhao26_06h"></div>
-                                <div class="data-item"></div>
+                            <div class="item-content">
+                                <table class="iluminacao-table" style="display: table; max-height: none; overflow-y: visible;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 50%;">Reservatório</th>
+                                            <th style="width: 16.67%;">20h</th>
+                                            <th style="width: 16.67%;">00h</th>
+                                            <th style="width: 16.67%;">06h</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 8px;">1. CISTERNA 1 MILHÃO</td>
+                                            <td><input type="text" value="100%" id="cisterna1_20h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="cisterna1_00h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="cisterna1_06h" style="text-align: center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 8px;">2. CISTERNA 900 KL</td>
+                                            <td><input type="text" value="100%" id="cisterna2_20h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="cisterna2_00h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="cisterna2_06h" style="text-align: center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 8px;">3. PAVILHAO 34 MARIA DEANNE</td>
+                                            <td><input type="text" value="100%" id="pavilhao34_20h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="pavilhao34_00h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="pavilhao34_06h" style="text-align: center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding-left: 8px;">4. PAVILHAO 26 LEONIDAS DEANNE</td>
+                                            <td><input type="text" value="100%" id="pavilhao26_20h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="pavilhao26_00h" style="text-align: center;"></td>
+                                            <td><input type="text" value="100%" id="pavilhao26_06h" style="text-align: center;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="section-item">
@@ -1519,28 +1504,21 @@
                         <div class="section-item">
                             <div class="item-header">
                                 <div class="item-number">1.</div>
-                                <div class="item-title">🔋 VEÍCULO ELÉTRICO 1:</div>
+                                <div class="item-title">VEÍCULOS:</div>
                             </div>
-                            <div class="item-content">
-                                <input type="text" placeholder="Placa do veículo elétrico 1" id="placaEletrico1">
-                            </div>
-                        </div>
-                        <div class="section-item">
-                            <div class="item-header">
-                                <div class="item-number">2.</div>
-                                <div class="item-title">🔋 VEÍCULO ELÉTRICO 2:</div>
-                            </div>
-                            <div class="item-content">
-                                <input type="text" placeholder="Placa do veículo elétrico 2" id="placaEletrico2">
-                            </div>
-                        </div>
-                        <div class="section-item">
-                            <div class="item-header">
-                                <div class="item-number">3.</div>
-                                <div class="item-title">⛽ VEÍCULO A COMBUSTÃO:</div>
-                            </div>
-                            <div class="item-content">
-                                <input type="text" placeholder="Placa do veículo a combustão" id="placaCombustao">
+                            <div class="item-content" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="placaEletrico1" style="font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 3px;">🔋 ELÉTRICO 1:</label>
+                                    <input type="text" placeholder="Placa" id="placaEletrico1" style="width: 100%;">
+                                </div>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="placaEletrico2" style="font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 3px;">🔋 ELÉTRICO 2:</label>
+                                    <input type="text" placeholder="Placa" id="placaEletrico2" style="width: 100%;">
+                                </div>
+                                <div style="flex: 1; min-width: 200px;">
+                                    <label for="placaCombustao" style="font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 3px;">⛽ COMBUSTÃO:</label>
+                                    <input type="text" placeholder="Placa" id="placaCombustao" style="width: 100%;">
+                                </div>
                             </div>
                         </div>
                         <div class="section-item">
@@ -2132,6 +2110,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
